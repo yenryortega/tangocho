@@ -129,6 +129,20 @@ def needs_setup():
     return not APP_PASSWORD and not password_hash()
 
 
+@app.before_request
+def force_https():
+    # Railway terminates TLS and forwards the original scheme in X-Forwarded-Proto.
+    if request.headers.get("X-Forwarded-Proto", "https") == "http":
+        return redirect(request.url.replace("http://", "https://", 1), code=301)
+
+
+@app.after_request
+def security_headers(resp):
+    if request.headers.get("X-Forwarded-Proto") == "https":
+        resp.headers["Strict-Transport-Security"] = "max-age=31536000"
+    return resp
+
+
 def login_required(fn):
     @wraps(fn)
     def wrapper(*a, **kw):
