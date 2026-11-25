@@ -13,6 +13,7 @@ from functools import wraps
 from pathlib import Path
 
 from flask import Flask, jsonify, redirect, render_template, request, session, url_for
+from werkzeug.security import check_password_hash, generate_password_hash
 from sqlalchemy import (JSON, Column, Float, Integer, MetaData, String, Table, Text,
                         create_engine, select)
 from sqlalchemy.dialects.postgresql import insert as pg_insert
@@ -22,7 +23,6 @@ BASE = Path(__file__).parent
 CONTENT_DIR = BASE / "content"
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
 app.permanent_session_lifetime = timedelta(days=365)
 app.config.update(SESSION_COOKIE_SAMESITE="Lax",
                   SESSION_COOKIE_SECURE=bool(os.environ.get("RAILWAY_ENVIRONMENT")))
@@ -98,14 +98,41 @@ def sync_content():
     return n
 
 
+def get_setting(key):
+    with engine.connect() as conn:
+        r = conn.execute(select(settings.c.value).where(settings.c.key == key)).first()
+    return r[0] if r else None
+
+
+def set_setting(key, value):
+    with engine.begin() as conn:
+        upsert(conn, settings, {"key": key, "value": value}, "key")
+
+
 meta.create_all(engine)
 print(f"[tangocho] synced {sync_content()} cards from content/")
+
+# Session key: env var if given, otherwise one generated once and kept in the database.
+_sk = os.environ.get("SECRET_KEY") or get_setting("secret_key")
+if not _sk:
+    _sk = secrets.token_hex(32)
+    set_setting("secret_key", _sk)
+    _sk = get_setting("secret_key") or _sk
+app.secret_key = _sk
+
+
+def password_hash():
+    return get_setting("password_hash")
+
+
+def needs_setup():
+    return not APP_PASSWORD and not password_hash()
 
 
 def login_required(fn):
     @wraps(fn)
     def wrapper(*a, **kw):
-        if APP_PASSWORD and not session.get("ok"):
+        if not session.get("ok"):
             if request.path.startswith("/api/"):
                 return jsonify(error="login"), 401
             return redirect(url_for("login"))
@@ -116,13 +143,28 @@ def login_required(fn):
 @app.route("/login", methods=["GET", "POST"])
 def login():
     error = None
+    setup = needs_setup()
     if request.method == "POST":
-        if APP_PASSWORD and secrets.compare_digest(request.form.get("password", ""), APP_PASSWORD):
-            session.permanent = True
-            session["ok"] = True
-            return redirect(url_for("index"))
-        error = "Contraseña incorrecta."
-    return render_template("login.html", error=error)
+        pw = request.form.get("password", "")
+        if setup:
+            if len(pw) < 8:
+                error = "Usa al menos 8 caracteres."
+            elif pw != request.form.get("password2", ""):
+                error = "Las contraseñas no coinciden."
+            else:
+                set_setting("password_hash", generate_password_hash(pw))
+                session.permanent = True
+                session["ok"] = True
+                return redirect(url_for("index"))
+        else:
+            ok = (APP_PASSWORD and secrets.compare_digest(pw, APP_PASSWORD)) or \
+                 (password_hash() and check_password_hash(password_hash(), pw))
+            if ok:
+                session.permanent = True
+                session["ok"] = True
+                return redirect(url_for("index"))
+            error = "Contraseña incorrecta."
+    return render_template("login.html", error=error, setup=setup)
 
 
 @app.route("/logout")

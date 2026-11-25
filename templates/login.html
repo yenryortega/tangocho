@@ -24,10 +24,16 @@ button{min-height:48px;border-radius:10px;border:0;background:var(--band);color:
 <body>
 <form method="post">
   <h1>単語帳</h1>
-  <p>JLPT N1 · vocabulario, gramática y tips de tus clases</p>
+  {% if setup %}<p>Primera vez: crea la contraseña para entrar en tu 単語帳.</p>{% else %}<p>JLPT N1 · vocabulario, gramática y tips de tus clases</p>{% endif %}
   {% if error %}<p class="err">{{ error }}</p>{% endif %}
+  {% if setup %}
+  <input type="password" name="password" placeholder="Nueva contraseña (mín. 8)" aria-label="Nueva contraseña" autocomplete="new-password" minlength="8" required autofocus>
+  <input type="password" name="password2" placeholder="Repite la contraseña" aria-label="Repite la contraseña" autocomplete="new-password" required>
+  <button type="submit">Crear contraseña y entrar</button>
+  {% else %}
   <input type="password" name="password" placeholder="Contraseña" aria-label="Contraseña" autocomplete="current-password" required autofocus>
   <button type="submit">Entrar</button>
+  {% endif %}
 </form>
 </body>
 </html>
