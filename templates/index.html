@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>単語帳 JLPT N1</title>
+<link rel="manifest" href="/static/manifest.json">
+<link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/icon-180.png">
+<meta name="theme-color" content="#1d2f5e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="単語帳">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap">
+<style>
+/* VOICE: calm, focused study tool — a few seconds between tasks at work
+   IDEA: the ring-bound 単語帳 (tango-chō) word cards every Japanese student carries
+   PICTURE: one large punched card on a metal ring, flipped to reveal reading, meaning and example
+   COLOUR and TYPE: 藍 indigo band, white card stock, 朱 vermilion accent; Zen Kaku Gothic New + Noto Sans JP, Noto Serif JP for the card word
+   LAYOUT: indigo header with today's counts and tabs; card centred below; rating row under the card; browse list and settings as other tabs */
+:root{color-scheme:light dark;
+  --bg:light-dark(#eef0f5,#0d1220);--band:light-dark(#1d2f5e,#141f3d);--on-band:#ffffff;--on-band-2:#c3cde6;
+  --card:light-dark(#ffffff,#1a2238);--ink:light-dark(#151b2b,#e8ecf5);--muted:light-dark(#566079,#a3adc4);
+  --line:light-dark(#d5dae6,#2c3652);--shu:light-dark(#d9442b,#ff7a5c);--shu-soft:light-dark(#fbe4de,#3a1f1a);
+  --ai:light-dark(#1d2f5e,#9db4ee);--ai-soft:light-dark(#e3e8f4,#222d4a);--ok:light-dark(#1f7a4d,#6fd39e);--ring:light-dark(#9aa3b5,#6b7590);
+  --f-d:"Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;--f-b:"Noto Sans JP",system-ui,-apple-system,"Hiragino Sans",sans-serif;--f-s:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--f-b);overflow-x:clip}
+button,input{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--shu);outline-offset:2px}
+.top{background:var(--band);color:var(--on-band);padding:max(18px,env(safe-area-inset-top)) max(5vw,16px) 0}
+.top-in{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.title{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px}
+h1{margin:0;font:700 clamp(26px,5vw,36px)/1.1 var(--f-d)}
+h1 small{font:500 15px var(--f-b);color:var(--on-band-2);margin-left:8px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.stat{background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px}
+.stat b{display:block;font:700 24px/1.1 var(--f-d);font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--on-band-2)}
+.stat.due b{color:#ffb4a3}
+.tabs{display:flex;gap:4px;margin-top:4px}
+.tabs button{border:0;background:transparent;color:var(--on-band-2);padding:12px 16px;min-height:44px;border-radius:10px 10px 0 0;font-weight:700}
+.tabs button[aria-selected=true]{background:var(--bg);color:var(--ink)}
+main{max-width:980px;margin:0 auto;padding:20px max(5vw,16px) max(48px,env(safe-area-inset-bottom))}
+.panel{display:flex;flex-direction:column;gap:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:40px;padding:0 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:14px;font-weight:500}
+.chips button[aria-pressed=true]{background:var(--ai);border-color:var(--ai);color:var(--card)}
+.stage{position:relative;padding-top:26px}
+.ringwrap{position:absolute;top:0;left:34px;width:44px;height:60px;z-index:2;pointer-events:none}
+.ringwrap svg{width:100%;height:100%}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 1px 0 var(--line),0 10px 28px -14px rgba(20,30,60,.35);padding:30px clamp(18px,5vw,44px) 26px;min-height:320px;display:flex;flex-direction:column;gap:14px;cursor:pointer}
+.card::before{content:"";position:absolute;top:22px;left:47px;width:18px;height:18px;border-radius:50%;background:var(--bg);box-shadow:inset 0 1px 2px rgba(0,0,0,.25)}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-left:44px}
+.kind{font-size:13px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--ai-soft);color:var(--ai)}
+.kind.grammar{background:var(--shu-soft);color:var(--shu)}
+.kind.tip{background:light-dark(#e2f1e8,#1b3327);color:var(--ok)}
+.meta{font-size:13px;color:var(--muted)}
+.front{font:700 clamp(34px,8vw,60px)/1.25 var(--f-s);text-align:center;margin:18px 0 6px;overflow-wrap:anywhere;text-wrap:balance}
+.front.long{font:600 clamp(20px,4vw,26px)/1.5 var(--f-b);text-align:left;margin:8px 0}
+.hint{text-align:center;color:var(--muted);font-size:14px;margin-top:auto}
+.back{display:flex;flex-direction:column;gap:12px;border-top:1px dashed var(--line);padding-top:14px}
+.reading{text-align:center;font:500 22px var(--f-b);color:var(--ai);margin-top:-6px}
+.meaning{font:700 20px/1.45 var(--f-d)}
+.ex{font:500 18px/1.8 var(--f-s);background:var(--ai-soft);border-radius:10px;padding:10px 14px}
+.exs{display:flex;flex-direction:column;gap:8px}.exn{color:var(--muted);font:500 14px var(--f-b)}
+.ex .es{display:block;font:400 14px/1.5 var(--f-b);color:var(--muted);margin-top:2px}
+.note{font-size:15px;color:var(--muted);white-space:pre-line}
+.speak{align-self:center;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:transparent;color:var(--ai);border-radius:99px;padding:6px 14px;min-height:40px;font-size:14px;font-weight:500}
+.speak svg{width:18px;height:18px}
+.rate{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.rate button,.show{min-height:56px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2}
+.rate button small{font-weight:400;font-size:12px;color:var(--muted);margin-top:3px}
+.rate .r1{border-color:var(--shu);color:var(--shu)}
+.rate .r3{background:var(--ai);border-color:var(--ai);color:var(--card)}
+.rate .r3 small{color:inherit;opacity:.8}
+.show{width:100%;background:var(--ai);border-color:var(--ai);color:var(--card);font-size:17px}
+.keys{font-size:13px;color:var(--muted);text-align:center}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.empty h2{margin:0;font:700 22px var(--f-d)}
+.btn{min-height:44px;padding:0 18px;border-radius:10px;border:1px solid var(--ai);background:var(--ai);color:var(--card);font-weight:700}
+.btn.ghost{background:transparent;color:var(--ai)}
+.search{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.search input{flex:1 1 220px;min-height:44px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:16px}
+.count{font-size:14px;color:var(--muted)}
+.list{display:flex;flex-direction:column;gap:8px}
+.list details{background:var(--card);border:1px solid var(--line);border-radius:12px}
+.list summary{list-style:none;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.6fr) auto;gap:12px;align-items:center;padding:12px 14px;cursor:pointer}
+.list summary::-webkit-details-marker{display:none}
+.list .w{font:700 18px var(--f-s);overflow-wrap:anywhere}
+.list .w small{display:block;font:400 13px var(--f-b);color:var(--muted)}
+.list .m{font-size:15px;color:var(--muted)}
+.pill{font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;white-space:nowrap;background:var(--ai-soft);color:var(--ai)}
+.pill.new{background:var(--shu-soft);color:var(--shu)}
+.pill.learn{background:light-dark(#fff1cc,#3a3012);color:light-dark(#8a5a00,#f2c75c)}
+.list .body{padding:0 14px 14px;display:flex;flex-direction:column;gap:10px}
+.set{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px;max-width:640px}
+.set label{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-weight:500}
+.set input[type=number]{width:96px;min-height:44px;padding:0 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:16px}
+.small{font-size:14px;color:var(--muted)}
+.msg{font-size:14px;color:var(--muted)}
+[hidden]{display:none!important}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.list summary{grid-template-columns:minmax(0,1fr) auto}.list .m{grid-column:1/-1;grid-row:2}.rate button{min-height:60px}.card{min-height:280px}}
+@media(prefers-reduced-motion:no-preference){.card.flip{animation:flip .28s ease-out}@keyframes flip{from{transform:rotateX(14deg);opacity:.6}to{transform:none;opacity:1}}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="title"><h1>単語帳<small>JLPT N1 · vocabulario, gramática y tips de tus clases</small></h1></div>
+    <div class="stats" aria-label="Resumen de hoy">
+      <div class="stat due"><b id="sDue">–</b><span>para repasar hoy</span></div>
+      <div class="stat"><b id="sNew">–</b><span>nuevas hoy</span></div>
+      <div class="stat"><b id="sLearned">–</b><span>aprendidas</span></div>
+      <div class="stat"><b id="sTotal">–</b><span>tarjetas en total</span></div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" id="tab-study" aria-selected="true" data-tab="study">Estudiar</button>
+      <button role="tab" id="tab-browse" aria-selected="false" data-tab="browse">Explorar</button>
+      <button role="tab" id="tab-settings" aria-selected="false" data-tab="settings">Ajustes</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="panel" id="p-study">
+    <div class="chips" id="studyFilter" role="group" aria-label="Qué estudiar">
+      <button type="button" data-f="all" aria-pressed="true">Todo</button>
+      <button type="button" data-f="vocab" aria-pressed="false">Vocabulario</button>
+      <button type="button" data-f="grammar" aria-pressed="false">Gramática</button>
+      <button type="button" data-f="tip" aria-pressed="false">Tips de examen</button>
+    </div>
+    <div id="studyArea"><div class="empty"><h2>Cargando tus tarjetas…</h2><p class="small">Un momento.</p></div></div>
+  </section>
+
+  <section class="panel" id="p-browse" hidden>
+    <div class="search">
+      <input id="q" type="search" placeholder="Buscar: 懸念, けねん, preocupación…" aria-label="Buscar tarjetas">
+      <span class="count" id="bCount"></span>
+    </div>
+    <div class="chips" id="browseFilter" role="group" aria-label="Filtrar por tipo">
+      <button type="button" data-f="all" aria-pressed="true">Todo</button>
+      <button type="button" data-f="vocab" aria-pressed="false">Vocabulario</button>
+      <button type="button" data-f="grammar" aria-pressed="false">Gramática</button>
+      <button type="button" data-f="tip" aria-pressed="false">Tips de examen</button>
+    </div>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section class="panel" id="p-settings" hidden>
+    <div class="set">
+      <label for="newPer">Tarjetas nuevas por día <input id="newPer" type="number" min="1" max="60" value="15"></label>
+      <p class="small">Cada mañana, tu clase de japonés añade aquí el vocabulario, la gramática y los tips nuevos. Si te atrasas, las tarjetas esperan: primero repasas las que tocan y luego aprendes nuevas hasta este límite.</p>
+      <p class="small">Atajos de teclado: <b>Espacio</b> muestra la respuesta; <b>1</b> Otra vez, <b>2</b> Difícil, <b>3</b> Bien, <b>4</b> Fácil.</p>
+      <p class="msg" id="setMsg" aria-live="polite"></p>
+      <p class="small"><a href="/logout" style="color:var(--ai)">Cerrar sesión</a></p>
+    </div>
+  </section>
+</main>
+
+<script>
+{
+const TZ='Asia/Tokyo';
+const KIND={vocab:'Vocabulario',grammar:'Gramática',tip:'Tip de examen'};
+const RING='<svg viewBox="0 0 44 60" aria-hidden="true"><path d="M22 4a14 14 0 0 1 14 14v24a14 14 0 0 1-28 0V22" fill="none" stroke="var(--ring)" stroke-width="5" stroke-linecap="round"/><path d="M22 4a14 14 0 0 1 14 14" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5" stroke-linecap="round"/></svg>';
+const SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+
+let cards=[], srs={}, settings={newPerDay:15};
+let cardsReady=false, srsReady=false, studyF='all', browseF='all', queue=null, cur=null, showing=false, extraNew=0;
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today=()=>new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+function addDays(iso,n){const [y,m,d]=iso.split('-').map(Number);const t=new Date(Date.UTC(y,m-1,d+n));return t.toISOString().slice(0,10);}
+function daysBetween(a,b){const p=s=>{const [y,m,d]=s.split('-').map(Number);return Date.UTC(y,m-1,d);};return Math.round((p(b)-p(a))/864e5);}
+function fmtIvl(d){if(d<=0)return '<10 min';if(d<7)return d+' d';if(d<30)return Math.round(d/7)+' sem';if(d<365)return Math.round(d/30)+' mes';return '1 año';}
+
+/* ---------- spaced repetition ---------- */
+function nextState(s,r){
+  const t=today(); s=s?Object.assign({},s):{ivl:0,ease:2.5,reps:0,lapses:0,state:'new',first:t};
+  if(!s.first)s.first=t;
+  let ivl=s.ivl||0, ease=s.ease||2.5, requeue=0;
+  if(s.state!=='review'){
+    if(r===1){ivl=0;requeue=3;s.state='learn';}
+    else if(r===2){ivl=0;requeue=6;s.state='learn';}
+    else if(r===3){ivl=1;s.state='review';}
+    else {ivl=4;ease+=0.15;s.state='review';}
+  }else{
+    if(r===1){s.lapses=(s.lapses||0)+1;ease=Math.max(1.3,ease-0.2);ivl=0;requeue=3;s.state='learn';}
+    else if(r===2){ivl=Math.max(ivl+1,Math.round(ivl*1.2));ease=Math.max(1.3,ease-0.15);}
+    else if(r===3){ivl=Math.max(ivl+1,Math.round(ivl*ease));}
+    else {ivl=Math.max(ivl+2,Math.round(ivl*ease*1.3));ease+=0.15;}
+  }
+  ivl=Math.min(ivl,365);
+  s.ivl=ivl;s.ease=Math.round(ease*100)/100;s.reps=(s.reps||0)+1;s.last=t;s.due=addDays(t,ivl);
+  return {s,requeue};
+}
+function statusOf(c){
+  const s=srs[c.id]; const t=today();
+  if(!s)return {k:'new',label:'Nueva'};
+  if(s.state!=='review')return {k:'learn',label:'Aprendiendo'};
+  const d=daysBetween(t,s.due);
+  return {k:'rev',label:d<=0?'Repasar hoy':'En '+fmtIvl(d)};
+}
+const match=(c,f)=>f==='all'||c.type===f;
+function introducedToday(){const t=today();return Object.values(srs).filter(s=>s.first===t).length;}
+function buildQueue(){
+  const t=today();
+  const pool=cards.filter(c=>match(c,studyF));
+  const due=pool.filter(c=>srs[c.id]&&srs[c.id].due<=t).sort((a,b)=>srs[a.id].due<srs[b.id].due?-1:1);
+  const room=Math.max(0,(settings.newPerDay||15)+extraNew-introducedToday());
+  const fresh=pool.filter(c=>!srs[c.id]).slice(0,room);
+  const q=[];let i=0,j=0;
+  while(i<due.length||j<fresh.length){ if(i<due.length)q.push(due[i++]); if(i<due.length)q.push(due[i++]); if(j<fresh.length)q.push(fresh[j++]); }
+  return q.map(c=>c.id);
+}
+
+/* ---------- header stats ---------- */
+function renderStats(){
+  const t=today();
+  $('sDue').textContent=cards.filter(c=>srs[c.id]&&srs[c.id].due<=t).length;
+  const room=Math.max(0,(settings.newPerDay||15)+extraNew-introducedToday());
+  $('sNew').textContent=Math.min(room,cards.filter(c=>!srs[c.id]).length);
+  $('sLearned').textContent=cards.filter(c=>srs[c.id]&&srs[c.id].state==='review').length;
+  $('sTotal').textContent=cards.length;
+}
+
+/* ---------- study ---------- */
+function exList(c){const l=[];if(c.example)l.push({jp:c.example,es:c.exampleEs});if(Array.isArray(c.examples))c.examples.forEach(e=>{if(e&&e.jp)l.push(e);});return l;}
+function exHtml(c){const l=exList(c);if(!l.length)return '';return '<div class="exs">'+l.map((e,i)=>'<div class="ex"><span class="exn">'+(l.length>1?(i+1)+'. ':'')+'</span>'+esc(e.jp)+(e.es?'<span class="es">'+esc(e.es)+'</span>':'')+'</div>').join('')+'</div>';}
+function cardBody(c,full){
+  const isLong=c.type==='tip'||(c.front||'').length>14;
+  let h='<div class="card-head"><span class="kind '+esc(c.type)+'">'+esc(KIND[c.type]||c.type)+'</span><span class="meta">'+(c.day?'Clase '+esc(c.day):'')+'</span></div>';
+  h+='<div class="front'+(isLong?' long':'')+'">'+esc(c.front)+'</div>';
+  if(!full)return h+'<p class="hint">Toca la tarjeta o pulsa Espacio para ver la respuesta</p>';
+  h+='<div class="back">';
+  if(c.reading)h+='<div class="reading">'+esc(c.reading)+'</div>';
+  if(c.meaning)h+='<div class="meaning">'+esc(c.meaning)+'</div>';
+  h+=exHtml(c);
+  if(c.note)h+='<div class="note">'+esc(c.note)+'</div>';
+  if(c.type!=='tip'&&'speechSynthesis' in window)h+='<button type="button" class="speak" id="speak">'+SPK+'Escuchar</button>';
+  return h+'</div>';
+}
+function renderStudy(){
+  const box=$('studyArea');
+  if(!cardsReady||!srsReady)return;
+  if(!cards.length){box.innerHTML='<div class="empty"><h2>Todavía no hay tarjetas</h2><p class="small">Aparecerán aquí en cuanto se añada el contenido de tus clases.</p></div>';return;}
+  if(queue===null)queue=buildQueue();
+  while(queue.length&&!cards.find(c=>c.id===queue[0]))queue.shift();
+  if(!queue.length){
+    const t=today();
+    const future=Object.values(srs).map(s=>s.due).filter(d=>d>t).sort()[0];
+    const moreNew=cards.filter(c=>match(c,studyF)&&!srs[c.id]).length;
+    box.innerHTML='<div class="empty"><h2>¡Listo por ahora! お疲れさまでした</h2><p class="small">'+(future?'Tu próximo repaso es en '+esc(fmtIvl(daysBetween(t,future)))+'.':'Has repasado todo lo pendiente.')+(moreNew?' Quedan '+moreNew+' tarjetas nuevas sin empezar.':'')+'</p>'+(moreNew?'<button type="button" class="btn" id="more">Aprender 5 nuevas más</button>':'')+'</div>';
+    const m=$('more'); if(m)m.onclick=()=>{extraNew+=5;queue=null;renderAll();};
+    return;
+  }
+  cur=cards.find(c=>c.id===queue[0]);
+  const s=srs[cur.id];
+  let h='<div class="stage"><div class="ringwrap">'+RING+'</div><article class="card'+(showing?' flip':'')+'" id="card" tabindex="0" aria-live="polite">'+cardBody(cur,showing)+'</article></div>';
+  if(!showing){h+='<button type="button" class="show" id="show">Mostrar respuesta</button>';}
+  else{
+    h+='<div class="rate" role="group" aria-label="¿Qué tal la recordaste?">'+[[1,'Otra vez'],[2,'Difícil'],[3,'Bien'],[4,'Fácil']].map(([r,l])=>{const n=nextState(s,r);return '<button type="button" class="r'+r+'" data-r="'+r+'">'+l+'<small>'+(n.requeue?'<10 min':fmtIvl(n.s.ivl))+'</small></button>';}).join('')+'</div>';
+  }
+  h+='<p class="keys">Quedan '+queue.length+' en esta sesión'+(s?'':' · tarjeta nueva')+'</p>';
+  box.innerHTML=h;
+  $('card').onclick=e=>{if(e.target.closest('#speak'))return;if(!showing){showing=true;renderStudy();}};
+  const sb=$('show'); if(sb)sb.onclick=()=>{showing=true;renderStudy();};
+  const sp=$('speak'); if(sp)sp.onclick=()=>speak(cur.type==='vocab'?cur.front:(cur.example||cur.front));
+  box.querySelectorAll('.rate button').forEach(b=>b.onclick=()=>rate(+b.dataset.r));
+}
+function speak(text){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(text));u.lang='ja-JP';u.rate=.9;speechSynthesis.speak(u);}catch(e){}}
+let writing=false;
+async function rate(r){
+  if(!cur||writing)return;
+  const {s,requeue}=nextState(srs[cur.id],r);
+  const id=cur.id;
+  srs[id]=s;
+  queue.shift();
+  if(requeue)queue.splice(Math.min(requeue,queue.length),0,id);
+  showing=false;renderStats();renderStudy();
+  writing=true;try{await api('/api/review',{card_id:id,state:s});}catch(e){$('setMsg').textContent='No se pudo guardar el progreso de una tarjeta.';}writing=false;
+}
+
+/* ---------- browse ---------- */
+function renderBrowse(){
+  const q=$('q').value.trim().toLowerCase();
+  const rows=cards.filter(c=>match(c,browseF)&&(!q||[c.front,c.reading,c.meaning,c.example,c.note].join(' ').toLowerCase().includes(q)));
+  $('bCount').textContent=rows.length+' de '+cards.length;
+  $('list').innerHTML=rows.length?rows.map(c=>{const st=statusOf(c);return '<details><summary><span class="w">'+esc(c.front)+(c.reading?'<small>'+esc(c.reading)+'</small>':'')+'</span><span class="m">'+esc(c.meaning)+'</span><span class="pill '+st.k+'">'+esc(st.label)+'</span></summary><div class="body">'+exHtml(c)+(c.note?'<div class="note">'+esc(c.note)+'</div>':'')+'<span class="small">'+esc(KIND[c.type]||'')+(c.day?' · Clase '+esc(c.day):'')+'</span></div></details>';}).join(''):'<div class="empty"><h2>Sin resultados</h2><p class="small">Prueba con otra palabra, en japonés, en kana o en español.</p></div>';
+}
+
+function renderAll(){renderStats();renderStudy();renderBrowse();}
+
+/* ---------- tabs, filters, keys ---------- */
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));
+  ['study','browse','settings'].forEach(t=>$('p-'+t).hidden=t!==b.dataset.tab);
+});
+function chips(id,fn){$(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{$(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));fn(b.dataset.f);});}
+chips('studyFilter',f=>{studyF=f;queue=null;showing=false;renderStudy();});
+chips('browseFilter',f=>{browseF=f;renderBrowse();});
+$('q').addEventListener('input',renderBrowse);
+document.addEventListener('keydown',e=>{
+  if($('p-study').hidden||e.target.matches('input'))return;
+  if((e.key===' '||e.key==='Enter')&&!showing&&cur){e.preventDefault();showing=true;renderStudy();}
+  else if(showing&&/^[1-4]$/.test(e.key))rate(+e.key);
+});
+let setT=null;
+$('newPer').addEventListener('input',()=>{
+  const v=Math.max(1,Math.min(60,parseInt($('newPer').value,10)||15));
+  clearTimeout(setT);setT=setTimeout(async()=>{settings.newPerDay=v;queue=null;renderAll();
+    try{await api('/api/settings',{newPerDay:v});$('setMsg').textContent='Guardado.';}catch(e){$('setMsg').textContent='No se pudo guardar.';}},500);
+});
+
+/* ---------- data ---------- */
+async function api(path,body){
+  const r=await fetch(path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});
+  if(r.status===401){location.href='/login';throw new Error('login');}
+  if(!r.ok)throw new Error('http '+r.status);
+  return r.json();
+}
+async function load(){
+  try{
+    const d=await api('/api/state');
+    cards=d.cards.filter(c=>c.front);
+    srs=d.srs||{};settings=Object.assign(settings,d.settings||{});$('newPer').value=settings.newPerDay;
+    cardsReady=true;srsReady=true;queue=null;renderAll();
+  }catch(e){if(e.message!=='login')$('studyArea').innerHTML='<div class="empty"><h2>No se pueden cargar las tarjetas</h2><p class="small">Revisa la conexión y recarga la página.</p></div>';}
+}
+load();
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!showing)load();});
+}
+</script>
+</body>
+</html>
