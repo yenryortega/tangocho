@@ -110,7 +110,7 @@ def set_setting(key, value):
 
 
 meta.create_all(engine)
-print(f"[tangocho] synced {sync_content()} cards from content/")
+print(f"[tangocho] db={engine.dialect.name} · synced {sync_content()} cards from content/")
 
 # Session key: env var if given, otherwise one generated once and kept in the database.
 _sk = os.environ.get("SECRET_KEY") or get_setting("secret_key")
