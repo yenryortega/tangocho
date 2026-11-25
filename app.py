@@ -157,8 +157,10 @@ def login():
                 session["ok"] = True
                 return redirect(url_for("index"))
         else:
-            ok = (APP_PASSWORD and secrets.compare_digest(pw, APP_PASSWORD)) or \
-                 (password_hash() and check_password_hash(password_hash(), pw))
+            if APP_PASSWORD:  # the Railway variable wins: only it is accepted
+                ok = secrets.compare_digest(pw, APP_PASSWORD)
+            else:
+                ok = bool(password_hash()) and check_password_hash(password_hash(), pw)
             if ok:
                 session.permanent = True
                 session["ok"] = True

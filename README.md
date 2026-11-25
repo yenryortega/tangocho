@@ -26,7 +26,7 @@ App de tarjetas con repaso espaciado (tipo Anki) para preparar el JLPT N1: vocab
 | Variable | Para qué |
 |---|---|
 | `DATABASE_URL` | La pone Railway al añadir PostgreSQL (referencia `${{Postgres.DATABASE_URL}}`) |
-| `APP_PASSWORD` | Opcional. Si no existe, la primera visita pide crear una contraseña (se guarda con hash en la base de datos) |
+| `APP_PASSWORD` | Contraseña de la app (recomendado). Si existe, es la única que vale. Si no existe, la primera visita pide crear una (se guarda con hash en la base de datos) |
 | `SECRET_KEY` | Opcional. Si no existe, la app genera una y la guarda en la base de datos |
 
 ## En local
