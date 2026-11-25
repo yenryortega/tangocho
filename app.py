@@ -207,7 +207,11 @@ def api_state():
                     "front": c["front"], "reading": c["reading"], "meaning": c["meaning"],
                     "example": c["example"], "exampleEs": c["example_es"],
                     "examples": c["examples"] or [], "note": c["note"]})
-    return jsonify(cards=out, srs=rs, settings={"newPerDay": int(st.get("newPerDay", 15))})
+    return jsonify(cards=out, srs=rs, settings={
+        "newPerDay": int(st.get("newPerDay", 15)),
+        "palette": st.get("palette", "classic") if st.get("palette") in PALETTES else "classic",
+        "mode": st.get("mode", "auto") if st.get("mode") in MODES else "auto",
+    })
 
 
 @app.post("/api/review")
@@ -226,14 +230,27 @@ def api_review():
     return jsonify(ok=True)
 
 
+PALETTES = {"classic", "ai", "matcha", "sumi"}
+MODES = {"auto", "light", "dark"}
+
+
 @app.post("/api/settings")
 @login_required
 def api_settings():
     d = request.get_json(force=True) or {}
-    v = max(1, min(60, int(d.get("newPerDay", 15))))
+    out = {}
     with engine.begin() as conn:
-        upsert(conn, settings, {"key": "newPerDay", "value": str(v)}, "key")
-    return jsonify(ok=True, newPerDay=v)
+        if "newPerDay" in d:
+            v = max(1, min(60, int(d.get("newPerDay") or 15)))
+            upsert(conn, settings, {"key": "newPerDay", "value": str(v)}, "key")
+            out["newPerDay"] = v
+        if d.get("palette") in PALETTES:
+            upsert(conn, settings, {"key": "palette", "value": d["palette"]}, "key")
+            out["palette"] = d["palette"]
+        if d.get("mode") in MODES:
+            upsert(conn, settings, {"key": "mode", "value": d["mode"]}, "key")
+            out["mode"] = d["mode"]
+    return jsonify(ok=True, **out)
 
 
 @app.get("/health")
