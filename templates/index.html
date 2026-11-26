@@ -108,6 +108,8 @@ main{flex:1;display:flex;flex-direction:column;width:100%;max-width:760px;margin
 .ex .es{display:block;font:400 13.5px/1.5 var(--f-body);color:var(--muted);margin-top:2px}
 .speak{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:transparent;color:var(--ai);border-radius:99px;padding:0 14px;min-height:38px;font-size:14px;font-weight:500}
 .speak svg{width:18px;height:18px}
+.speak.on{background:var(--ai);border-color:var(--ai);color:var(--on-ai)}
+#speakMsg:empty{display:none}
 
 .bar{position:sticky;bottom:0;z-index:5;display:flex;flex-direction:column;gap:8px;padding:28px 0 calc(14px + env(safe-area-inset-bottom));background:linear-gradient(to bottom,transparent,var(--ground) 20px)}
 .rate{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
@@ -392,7 +394,7 @@ function cardBody(c,full){
   h+='</div><div class="back"><div class="back-main">';
   if(c.meaning)h+='<div class="meaning">'+esc(c.meaning)+'</div>';
   if(c.note)h+='<div class="note">'+esc(c.note)+'</div>';
-  if(c.type!=='tip'&&'speechSynthesis' in window)h+='<button type="button" class="speak" id="speak">'+SPK+'Escuchar</button>';
+  if(c.type!=='tip'&&'speechSynthesis' in window)h+='<button type="button" class="speak" id="speak">'+SPK+'Escuchar</button><p class="small" id="speakMsg" aria-live="polite"></p>';
   h+='</div>'+exHtml(c);
   return h+'</div>';
 }
@@ -425,7 +427,36 @@ function renderStudy(){
   const sp=$('speak'); if(sp)sp.onclick=()=>speak(cur.type==='vocab'?cur.front:(cur.example||cur.front));
   box.querySelectorAll('.rate button').forEach(b=>b.onclick=()=>rate(+b.dataset.r));
 }
-function speak(text){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(text));u.lang='ja-JP';u.rate=.9;speechSynthesis.speak(u);}catch(e){}}
+/* Text-to-speech with the device's Japanese voice.
+   iOS quirks handled: voices load late, cancel()+speak() in the same tick can go silent,
+   and an utterance that is not referenced can be garbage-collected mid-speech. */
+let jaVoice=null, lastUtt=null;
+function pickVoice(){
+  try{const vs=speechSynthesis.getVoices()||[];
+    const ja=vs.filter(v=>/^ja([-_]|$)/i.test(v.lang));
+    jaVoice=ja.find(v=>/kyoko|otoya|o-ren|hattori|google/i.test(v.name))||ja.find(v=>v.localService)||ja[0]||null;
+  }catch(e){}
+}
+if('speechSynthesis' in window){pickVoice();try{speechSynthesis.addEventListener('voiceschanged',pickVoice);}catch(e){speechSynthesis.onvoiceschanged=pickVoice;}}
+function speakMsg(t){const m=$('speakMsg');if(m)m.textContent=t;}
+function speak(text){
+  if(!('speechSynthesis' in window)){speakMsg('Este navegador no puede leer en voz alta.');return;}
+  if(!jaVoice)pickVoice();
+  const go=()=>{
+    const u=new SpeechSynthesisUtterance(String(text));
+    u.lang='ja-JP';u.rate=.9;if(jaVoice)u.voice=jaVoice;
+    const b=$('speak');
+    u.onstart=()=>{if(b)b.classList.add('on');speakMsg('');};
+    u.onend=()=>{if(b)b.classList.remove('on');};
+    u.onerror=e=>{if(b)b.classList.remove('on');if(e.error!=='interrupted'&&e.error!=='canceled')speakMsg(jaVoice?'No se pudo reproducir. Comprueba que el móvil no esté en silencio.':'No hay voz japonesa instalada en este dispositivo.');};
+    lastUtt=u; try{speechSynthesis.resume();}catch(e){}
+    speechSynthesis.speak(u);
+    setTimeout(()=>{if(!speechSynthesis.speaking&&!speechSynthesis.pending&&lastUtt===u)speakMsg(jaVoice?'No se oye nada? Quita el modo silencio del móvil y sube el volumen.':'No hay voz japonesa instalada. En iPhone: Ajustes → Accesibilidad → Contenido leído → Voces → Japonés.');},1500);
+  };
+  try{
+    if(speechSynthesis.speaking||speechSynthesis.pending){speechSynthesis.cancel();setTimeout(go,120);}else go();
+  }catch(e){speakMsg('No se pudo reproducir el audio.');}
+}
 const PALETTES=[
   {id:'classic',name:'Clásico',desc:'Índigo suave, el original',band:'#1b2c58',ground:'#e7ebf3',btn:'#1b2c58',bandD:'#121b34',groundD:'#0c1222',btnD:'#a9bdf0'},
   {id:'ai',name:'藍 Índigo',desc:'Índigo intenso, fondo papel',band:'#1b2c58',ground:'#f2f1ee',btn:'#1b2c58',bandD:'#16213f',groundD:'#070b14',btnD:'#3f5fcf'},
