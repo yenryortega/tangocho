@@ -10,9 +10,9 @@
 <meta name="theme-color" content="#1b2c58" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121b34" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="単語帳">
-<script>try{var d=document.documentElement,p=localStorage.getItem('tg-palette'),m=localStorage.getItem('tg-mode');if(p)d.dataset.palette=p;if(m&&m!=='auto')d.dataset.theme=m;}catch(e){}</script>
+<script>try{var d=document.documentElement,p=localStorage.getItem('tg-palette'),m=localStorage.getItem('tg-mode');if(p)d.dataset.palette=p;if(m&&m!=='auto')d.dataset.theme=m;if(navigator.standalone||matchMedia('(display-mode: standalone)').matches)d.classList.add('pwa');}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700&display=swap">
 <style>
@@ -173,6 +173,18 @@ a{color:var(--ai)}
 .stat.due b{color:inherit}.stat.due.hot b{color:#ffb19f}
 .tabs button[aria-selected=true]{color:var(--band)}
 
+/* ---------- startup splash (home-screen app only, like Bocado) ---------- */
+.splash{display:none!important}html.pwa .splash{display:flex!important}
+.splash{position:fixed;inset:0;z-index:100;background:var(--band);color:var(--on-band);flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .4s ease,visibility .4s}
+.splash img{width:104px;height:104px;border-radius:26px;box-shadow:0 12px 32px rgba(0,0,0,.35);animation:spPulse 1.6s ease-in-out infinite}
+.splash b{font:700 34px/1 var(--f-word);letter-spacing:.06em}
+.splash small{font:500 13px var(--f-ui);color:var(--on-band-2);letter-spacing:.04em;margin-top:-6px}
+.sbar{width:160px;height:6px;border-radius:3px;background:var(--band-2);overflow:hidden;margin-top:8px}
+.sbar i{display:block;height:100%;width:0;background:var(--seal);border-radius:3px;transition:width .45s ease}
+.splash.done{opacity:0;visibility:hidden}.splash.done img{transform:scale(1.08);transition:transform .4s ease}
+@keyframes spPulse{50%{transform:scale(1.04)}}
+@media(prefers-reduced-motion:reduce){.splash img{animation:none}.splash,.sbar i{transition:none}}
+
 /* ---------- phones ---------- */
 @media(max-width:600px){
   h1 small{display:none}
@@ -229,6 +241,12 @@ a{color:var(--ai)}
 </style>
 </head>
 <body>
+<div class="splash" id="splash" aria-hidden="true">
+  <img src="/static/icon.svg" alt="" width="104" height="104">
+  <b>単語帳</b>
+  <small>JLPT N1</small>
+  <div class="sbar"><i id="splashBar"></i></div>
+</div>
 <header class="top">
   <div class="top-in">
     <div class="title"><h1>単語帳<small>Vocabulario, gramática y tips de tus clases de N1</small></h1><span class="today" id="today"></span></div>
@@ -488,6 +506,9 @@ async function api(path,body){
   if(!r.ok)throw new Error('http '+r.status);
   return r.json();
 }
+const splashP=v=>{const b=$('splashBar');if(b)b.style.width=v+'%';};
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function hideSplash(){const sp=$('splash');if(!sp)return;sp.classList.add('done');setTimeout(()=>sp.remove(),450);}
 async function load(){
   try{
     const d=await api('/api/state');
@@ -496,7 +517,14 @@ async function load(){
     cardsReady=true;srsReady=true;queue=null;renderAll();
   }catch(e){if(e.message!=='login')$('studyArea').innerHTML='<div class="empty"><h2>No se pueden cargar las tarjetas</h2><p class="small">Revisa la conexión y recarga la página.</p></div>';}
 }
-load();
+(async()=>{
+  const t0=performance.now();requestAnimationFrame(()=>splashP(18));
+  const p=load();
+  setTimeout(()=>splashP(55),250);
+  await p;splashP(100);
+  if(document.documentElement.classList.contains('pwa'))await wait(Math.max(450,1000-(performance.now()-t0)));
+  hideSplash();
+})();
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!showing)load();});
 }
 </script>
