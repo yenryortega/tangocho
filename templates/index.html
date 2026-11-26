@@ -180,7 +180,7 @@ a{color:var(--ai)}
 .splash b{font:700 34px/1 var(--f-word);letter-spacing:.06em}
 .splash small{font:500 13px var(--f-ui);color:var(--on-band-2);letter-spacing:.04em;margin-top:-6px}
 .sbar{width:160px;height:6px;border-radius:3px;background:var(--band-2);overflow:hidden;margin-top:8px}
-.sbar i{display:block;height:100%;width:0;background:var(--seal);border-radius:3px;transition:width .45s ease}
+.sbar i{display:block;height:100%;width:0;background:var(--seal);border-radius:3px;transition:width .5s cubic-bezier(.3,.7,.3,1)}
 .splash.done{opacity:0;visibility:hidden}.splash.done img{transform:scale(1.08);transition:transform .4s ease}
 @keyframes spPulse{50%{transform:scale(1.04)}}
 @media(prefers-reduced-motion:reduce){.splash img{animation:none}.splash,.sbar i{transition:none}}
@@ -518,11 +518,17 @@ async function load(){
   }catch(e){if(e.message!=='login')$('studyArea').innerHTML='<div class="empty"><h2>No se pueden cargar las tarjetas</h2><p class="small">Revisa la conexión y recarga la página.</p></div>';}
 }
 (async()=>{
-  const t0=performance.now();requestAnimationFrame(()=>splashP(18));
+  const pwa=document.documentElement.classList.contains('pwa');
+  const t0=performance.now();requestAnimationFrame(()=>splashP(12));
   const p=load();
-  setTimeout(()=>splashP(55),250);
-  await p;splashP(100);
-  if(document.documentElement.classList.contains('pwa'))await wait(Math.max(450,1000-(performance.now()-t0)));
+  if(pwa){  /* the bar fills in steps over ~2 s even when the data is already here */
+    await wait(450);splashP(38);
+    await wait(550);splashP(64);
+    await p;
+    await wait(Math.max(0,1500-(performance.now()-t0)));splashP(88);
+    await wait(350);splashP(100);
+    await wait(450);
+  }else{await p;}
   hideSplash();
 })();
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!showing)load();});
