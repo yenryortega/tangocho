@@ -1,0 +1,517 @@
+{
+  "day": 5,
+  "title": "Listening upkeep + double short reading: cited views",
+  "cards": [
+    {
+      "id": "d005-v01",
+      "type": "vocab",
+      "order": 1,
+      "front": "根強い",
+      "reading": "ねづよい",
+      "meaning": "arraigado, persistente (creencia, apoyo)",
+      "example": "「女性は家庭に入るべきだ」という考えは、今なお一部に根強く残っている。",
+      "exampleEs": "La idea de que «la mujer debe quedarse en casa» sigue profundamente arraigada en algunos sectores.",
+      "examples": [
+        {
+          "jp": "新制度への反対意見は根強く、導入は来年度に見送られた。",
+          "es": "La oposición al nuevo sistema es persistente y su implantación se aplazó al año fiscal siguiente."
+        },
+        {
+          "jp": "このブランドは地元客の間で根強い人気がある。",
+          "es": "Esta marca goza de una popularidad muy arraigada entre los clientes locales."
+        }
+      ],
+      "note": "Colocaciones: 根強い人気／根強い反対／根強い不信感／根強く残る. Siempre con algo que cuesta erradicar."
+    },
+    {
+      "id": "d005-v02",
+      "type": "vocab",
+      "order": 2,
+      "front": "裏付ける",
+      "reading": "うらづける",
+      "meaning": "corroborar, respaldar (con datos/pruebas)",
+      "example": "今回の調査結果は、これまでの仮説を裏付けるものとなった。",
+      "exampleEs": "Los resultados de este estudio han venido a corroborar la hipótesis planteada hasta ahora.",
+      "examples": [
+        {
+          "jp": "見積もりの妥当性を裏付ける資料を添付してください。",
+          "es": "Adjunte documentación que respalde la razonabilidad del presupuesto."
+        },
+        {
+          "jp": "彼の証言を裏付ける証拠は、まだ見つかっていない。",
+          "es": "Aún no se han encontrado pruebas que corroboren su testimonio."
+        }
+      ],
+      "note": "Sustantivo: 裏付け（データの裏付けがない＝no está respaldado por datos）. Muy frecuente en ensayos que citan estadísticas."
+    },
+    {
+      "id": "d005-v03",
+      "type": "vocab",
+      "order": 3,
+      "front": "早計",
+      "reading": "そうけい",
+      "meaning": "precipitado, prematuro (juicio)",
+      "example": "一度の失敗で計画全体を中止するのは早計だ。",
+      "exampleEs": "Cancelar todo el plan por un solo fracaso es precipitado.",
+      "examples": [
+        {
+          "jp": "数字が減ったからといって、需要がなくなったと判断するのは早計ではないだろうか。",
+          "es": "¿No es prematuro concluir que ha desaparecido la demanda solo porque las cifras han bajado?"
+        },
+        {
+          "jp": "結論を出すのは早計なので、もう一か月様子を見ましょう。",
+          "es": "Sacar conclusiones ahora sería precipitado; observemos un mes más."
+        }
+      ],
+      "note": "Forma típica: 〜と判断する／結論づけるのは早計だ. Marca la postura del autor: rechaza una conclusión ajena."
+    },
+    {
+      "id": "d005-v04",
+      "type": "vocab",
+      "order": 4,
+      "front": "一面的",
+      "reading": "いちめんてき",
+      "meaning": "unilateral, parcial (visión de un solo lado)",
+      "example": "その報道は事件を一面的にしかとらえていない。",
+      "exampleEs": "Esa información solo capta el caso desde un lado.",
+      "examples": [
+        {
+          "jp": "売上だけで店舗を評価するのは一面的な見方だ。",
+          "es": "Evaluar una tienda solo por las ventas es una visión parcial."
+        },
+        {
+          "jp": "物事を一面的に判断せず、相手の事情も考えるべきだ。",
+          "es": "No hay que juzgar las cosas desde un solo ángulo; también hay que pensar en las circunstancias del otro."
+        }
+      ],
+      "note": "Opuesto: 多面的（たためんてき）. En 読解 suele ir con críticas: 一面的な議論／見方."
+    },
+    {
+      "id": "d005-v05",
+      "type": "vocab",
+      "order": 5,
+      "front": "媒体",
+      "reading": "ばいたい",
+      "meaning": "medio, soporte (de información)",
+      "example": "紙からデジタルへ、情報の媒体は大きく変わった。",
+      "exampleEs": "Del papel a lo digital, los soportes de la información han cambiado mucho.",
+      "examples": [
+        {
+          "jp": "この広告は複数の媒体に同時に掲載される。",
+          "es": "Este anuncio se publicará a la vez en varios medios."
+        },
+        {
+          "jp": "記録媒体の劣化によって、貴重なデータが失われることもある。",
+          "es": "A veces se pierden datos valiosos por el deterioro del soporte de grabación."
+        }
+      ],
+      "note": "Sinónimo coloquial: メディア. 記録媒体＝soporte de almacenamiento."
+    },
+    {
+      "id": "d005-v06",
+      "type": "vocab",
+      "order": 6,
+      "front": "先回り",
+      "reading": "さきまわり",
+      "meaning": "adelantarse, anticiparse (a algo/alguien)",
+      "example": "客の要望を先回りして準備しておく。",
+      "exampleEs": "Prepararlo todo anticipándose a las peticiones del cliente.",
+      "examples": [
+        {
+          "jp": "子どもの失敗を先回りして防いでばかりいると、自分で考える力が育たない。",
+          "es": "Si siempre te adelantas a evitar los fallos de los niños, no desarrollan la capacidad de pensar por sí mismos."
+        },
+        {
+          "jp": "相手の反論に先回りして、資料を用意しておいた。",
+          "es": "Me adelanté a las objeciones de la otra parte y preparé los documentos."
+        }
+      ],
+      "note": "先回りして＋verbo. En ensayos sobre educación o servicio suele tener matiz de 'pasarse de previsor'."
+    },
+    {
+      "id": "d005-v07",
+      "type": "vocab",
+      "order": 7,
+      "front": "押し付けがましい",
+      "reading": "おしつけがましい",
+      "meaning": "impositivo, que te lo impone (servicio, consejo)",
+      "example": "親切も度が過ぎると押し付けがましくなる。",
+      "exampleEs": "La amabilidad, si se excede, se vuelve impositiva.",
+      "examples": [
+        {
+          "jp": "押し付けがましい言い方にならないよう、提案の仕方を工夫した。",
+          "es": "Cuidé la forma de proponerlo para que no sonara impositivo."
+        },
+        {
+          "jp": "彼のアドバイスはいつも押し付けがましくて、素直に聞けない。",
+          "es": "Sus consejos siempre suenan a imposición y no consigo escucharlos con buena disposición."
+        }
+      ],
+      "note": "押し付ける（imponer）+ がましい（que tiene aire de）. Igual: 恩着せがましい（hacer sentir en deuda）."
+    },
+    {
+      "id": "d005-v08",
+      "type": "vocab",
+      "order": 8,
+      "front": "余地",
+      "reading": "よち",
+      "meaning": "margen, cabida (para algo)",
+      "example": "この計画には、まだ改善の余地がある。",
+      "exampleEs": "Este plan todavía tiene margen de mejora.",
+      "examples": [
+        {
+          "jp": "証拠は明らかで、疑いの余地はない。",
+          "es": "Las pruebas son claras y no hay lugar a dudas."
+        },
+        {
+          "jp": "価格交渉の余地があるか、仕入れ先に確認してください。",
+          "es": "Confirme con el proveedor si hay margen para negociar el precio."
+        }
+      ],
+      "note": "Colocaciones fijas: 改善の余地／疑いの余地がない／議論の余地／選択の余地がない."
+    },
+    {
+      "id": "d005-v09",
+      "type": "vocab",
+      "order": 9,
+      "front": "神髄",
+      "reading": "しんずい",
+      "meaning": "esencia, quintaesencia",
+      "example": "簡素さこそが和食の神髄だと言われる。",
+      "exampleEs": "Se dice que la sencillez es precisamente la esencia de la cocina japonesa.",
+      "examples": [
+        {
+          "jp": "師匠のもとで十年修業して、ようやく芸の神髄に触れた気がした。",
+          "es": "Tras diez años de aprendizaje con el maestro, por fin sentí que rozaba la esencia del arte."
+        },
+        {
+          "jp": "相手の立場に立つことが、交渉の神髄である。",
+          "es": "Ponerse en el lugar del otro es la esencia de la negociación."
+        }
+      ],
+      "note": "También se escribe 真髄. Registro escrito/elevado; en 読解 aparece en tesis citadas («se dice que la esencia es…»)."
+    },
+    {
+      "id": "d005-v10",
+      "type": "vocab",
+      "order": 10,
+      "front": "見極める",
+      "reading": "みきわめる",
+      "meaning": "discernir, determinar a fondo",
+      "example": "状況を見極めてから判断しても遅くはない。",
+      "exampleEs": "No es tarde para decidir después de haber evaluado bien la situación.",
+      "examples": [
+        {
+          "jp": "本物と偽物を見極める目を養う。",
+          "es": "Desarrollar el ojo para distinguir lo auténtico de lo falso."
+        },
+        {
+          "jp": "需要の動向を見極めたうえで、発注量を決めたい。",
+          "es": "Quiero decidir la cantidad del pedido después de calibrar bien la evolución de la demanda."
+        }
+      ],
+      "note": "Más profundo que 見分ける: implica observar hasta llegar al fondo. 〜を見極めたうえで es muy de informe."
+    },
+    {
+      "id": "d005-v11",
+      "type": "vocab",
+      "order": 11,
+      "front": "行き過ぎる",
+      "reading": "いきすぎる",
+      "meaning": "pasarse, ir demasiado lejos",
+      "example": "行き過ぎた競争は、業界全体を疲弊させる。",
+      "exampleEs": "La competencia excesiva agota a todo el sector.",
+      "examples": [
+        {
+          "jp": "規制が行き過ぎると、かえって新しい技術の芽を摘んでしまう。",
+          "es": "Si la regulación se pasa de la raya, acaba cortando de raíz las nuevas tecnologías."
+        },
+        {
+          "jp": "節約もいいが、行き過ぎると社員のやる気を損なう。",
+          "es": "Ahorrar está bien, pero si se exagera, mina la motivación del personal."
+        }
+      ],
+      "note": "行き過ぎた＋sustantivo＝excesivo. En 読解 suele ser una CONDICIÓN: el autor no critica X, sino X cuando se pasa (trampa f)."
+    },
+    {
+      "id": "d005-v12",
+      "type": "vocab",
+      "order": 12,
+      "front": "損なう",
+      "reading": "そこなう",
+      "meaning": "dañar, menoscabar, perjudicar",
+      "example": "過度な開発は、地域の景観を損なうおそれがある。",
+      "exampleEs": "Un desarrollo excesivo puede dañar el paisaje de la zona.",
+      "examples": [
+        {
+          "jp": "不用意な発言で、長年の信頼を損なってしまった。",
+          "es": "Por un comentario imprudente perdí una confianza de años."
+        },
+        {
+          "jp": "健康を損なってまで働く必要はない。",
+          "es": "No hace falta trabajar hasta el punto de perjudicar la salud."
+        }
+      ],
+      "note": "Objetos típicos: 健康／信頼／景観／品質／機嫌を損なう. V-ます＋損なう＝fallar al hacer (見損なう, 言い損なう)."
+    },
+    {
+      "id": "d005-v13",
+      "type": "vocab",
+      "order": 13,
+      "front": "希薄",
+      "reading": "きはく",
+      "meaning": "tenue, escaso, débil (relaciones, conciencia)",
+      "example": "都市部では、近所付き合いが希薄になっている。",
+      "exampleEs": "En las ciudades, las relaciones vecinales se están debilitando.",
+      "examples": [
+        {
+          "jp": "社員の当事者意識が希薄なことが、問題の根本にある。",
+          "es": "En la raíz del problema está la débil conciencia de implicación de los empleados."
+        },
+        {
+          "jp": "高地では空気が希薄で、すぐに息が切れる。",
+          "es": "En altura el aire está enrarecido y uno se queda sin aliento enseguida."
+        }
+      ],
+      "note": "Colocaciones: 人間関係が希薄／意識が希薄／希薄化. Lectura: きはく (no きうす)."
+    },
+    {
+      "id": "d005-v14",
+      "type": "vocab",
+      "order": 14,
+      "front": "何気ない",
+      "reading": "なにげない",
+      "meaning": "casual, sin intención",
+      "example": "何気ない一言が、相手を深く傷つけることがある。",
+      "exampleEs": "Una frase dicha sin pensar puede herir profundamente al otro.",
+      "examples": [
+        {
+          "jp": "新しい企画は、休憩室での何気ない会話から生まれた。",
+          "es": "El nuevo proyecto nació de una conversación casual en la sala de descanso."
+        },
+        {
+          "jp": "彼は何気なく窓の外に目をやった。",
+          "es": "Echó una mirada distraída por la ventana."
+        }
+      ],
+      "note": "Adverbio: 何気なく. No confundir con なにげに (coloquial, 'la verdad es que')."
+    },
+    {
+      "id": "d005-v15",
+      "type": "vocab",
+      "order": 15,
+      "front": "孤立",
+      "reading": "こりつ",
+      "meaning": "aislamiento",
+      "example": "在宅勤務では、新入社員が孤立しやすい。",
+      "exampleEs": "Con el teletrabajo, los empleados nuevos tienden a quedarse aislados.",
+      "examples": [
+        {
+          "jp": "強硬な姿勢を続けた結果、その国は国際社会で孤立した。",
+          "es": "Como resultado de mantener una postura intransigente, ese país quedó aislado en la comunidad internacional."
+        },
+        {
+          "jp": "大雪で道路が寸断され、集落が孤立している。",
+          "es": "Por la gran nevada las carreteras están cortadas y la aldea ha quedado incomunicada."
+        }
+      ],
+      "note": "孤立する／孤立を深める／孤立無援（sin ningún apoyo）. Tema frecuente en textos de sociedad."
+    },
+    {
+      "id": "d005-v16",
+      "type": "vocab",
+      "order": 16,
+      "front": "意識的",
+      "reading": "いしきてき",
+      "meaning": "consciente, deliberado",
+      "example": "意識的に休憩を取らないと、集中力は続かない。",
+      "exampleEs": "Si no te tomas descansos de forma deliberada, no mantienes la concentración.",
+      "examples": [
+        {
+          "jp": "差別は、無意識のうちに行われることも多い。だからこそ意識的な努力が必要だ。",
+          "es": "La discriminación a menudo se produce de forma inconsciente; por eso hace falta un esfuerzo deliberado."
+        },
+        {
+          "jp": "会議では、若手に意識的に発言の機会を与えている。",
+          "es": "En las reuniones damos deliberadamente oportunidades de hablar a los más jóvenes."
+        }
+      ],
+      "note": "Opuesto: 無意識（に）. 意識的に〜する／〜工夫が必要だ: muy típico de la conclusión de un ensayo o charla."
+    },
+    {
+      "id": "d005-v17",
+      "type": "vocab",
+      "order": 17,
+      "front": "気が利く",
+      "reading": "きがきく",
+      "meaning": "ser atento, avispado (anticiparse a lo que hace falta)",
+      "example": "彼女は気が利くので、お客様からの評判がいい。",
+      "exampleEs": "Ella es muy atenta, así que tiene buena fama entre los clientes.",
+      "examples": [
+        {
+          "jp": "会議の前にお茶を用意しておくとは、気が利くね。",
+          "es": "Qué detalle tener el té preparado antes de la reunión."
+        },
+        {
+          "jp": "気が利かなくてすみません、すぐにお持ちします。",
+          "es": "Perdone mi falta de atención; se lo traigo enseguida."
+        }
+      ],
+      "note": "Transitivo: 気を利かせる（tener el detalle de）. 気が利いた＋sustantivo＝ingenioso, acertado（気の利いた言葉）."
+    },
+    {
+      "id": "d005-g01",
+      "type": "grammar",
+      "order": 20,
+      "front": "〜と言われて久しい",
+      "reading": "といわれてひさしい",
+      "meaning": "hace ya tiempo que se dice que…",
+      "example": "「若者の活字離れ」と言われて久しい。",
+      "exampleEs": "Hace ya mucho que se habla del «alejamiento de los jóvenes de la letra impresa».",
+      "examples": [
+        {
+          "jp": "地方の人手不足が叫ばれて久しいが、有効な対策は打ち出されていない。",
+          "es": "Hace tiempo que se viene denunciando la falta de mano de obra en las regiones, pero no se han planteado medidas eficaces."
+        },
+        {
+          "jp": "観光地のゴミ問題が指摘されて久しい。",
+          "es": "Hace ya tiempo que se señala el problema de la basura en los destinos turísticos."
+        }
+      ],
+      "note": "Forma: 〜と言われて／叫ばれて／指摘されて＋久しい. Abre un texto citando una idea ajena (一般論). Ojo: el autor suele matizarla o rebatirla después (trampa e)."
+    },
+    {
+      "id": "d005-g02",
+      "type": "grammar",
+      "order": 21,
+      "front": "〜とされる／〜とされてきた",
+      "reading": "とされる",
+      "meaning": "se considera que…; se ha tenido por… (opinión establecida)",
+      "example": "客の要望を先回りすることこそ、もてなしの神髄だとされてきた。",
+      "exampleEs": "Se ha considerado que adelantarse a los deseos del cliente es la esencia de la hospitalidad.",
+      "examples": [
+        {
+          "jp": "この遺跡は、三世紀ごろのものとされている。",
+          "es": "Se considera que este yacimiento data aproximadamente del siglo III."
+        },
+        {
+          "jp": "適度な運動は、睡眠の質を高めるとされる。",
+          "es": "Se considera que el ejercicio moderado mejora la calidad del sueño."
+        }
+      ],
+      "note": "Forma: 普通形（だ）＋とされる. Registro escrito impersonal. Si va en pasado continuo (とされてきた), casi siempre anuncia 'pero ahora el autor lo cuestiona'."
+    },
+    {
+      "id": "d005-g03",
+      "type": "grammar",
+      "order": 22,
+      "front": "〜からといって／だからといって",
+      "reading": "からといって",
+      "meaning": "solo porque…, (no por eso)…",
+      "example": "数字が減ったからといって、需要がなくなったとは限らない。",
+      "exampleEs": "Que las cifras hayan bajado no significa necesariamente que haya desaparecido la demanda.",
+      "examples": [
+        {
+          "jp": "忙しいからといって、確認を怠っていいわけではない。",
+          "es": "Estar ocupado no justifica descuidar las comprobaciones."
+        },
+        {
+          "jp": "紙の部数は減っている。しかし、だからといって若者が読まなくなったわけではない。",
+          "es": "Las tiradas en papel bajan. Pero eso no quiere decir que los jóvenes hayan dejado de leer."
+        }
+      ],
+      "note": "Forma: 普通形＋からといって〜（とは限らない／わけではない／〜てはいけない）. Casi siempre seguido de negación. だからといって al inicio de frase = el autor rechaza la conclusión fácil: ahí empieza su opinión."
+    },
+    {
+      "id": "d005-g04",
+      "type": "grammar",
+      "order": 23,
+      "front": "〜きらいがある",
+      "reading": "きらいがある",
+      "meaning": "tener la (mala) tendencia a…",
+      "example": "彼は物事を悲観的に考えるきらいがある。",
+      "exampleEs": "Él tiene cierta tendencia a ver las cosas de forma pesimista.",
+      "examples": [
+        {
+          "jp": "紙の部数だけを指標にした議論は、現実を一面的にとらえるきらいがある。",
+          "es": "Los debates que solo usan las tiradas en papel como indicador tienden a captar la realidad de forma parcial."
+        },
+        {
+          "jp": "当社は前例にこだわるきらいがあり、新しい提案が通りにくい。",
+          "es": "Nuestra empresa tiende a aferrarse a los precedentes, y cuesta que se aprueben propuestas nuevas."
+        }
+      ],
+      "note": "Forma: V辞書形／Nの＋きらいがある. Siempre NEGATIVO y crítico: señala la valoración del autor. Escrito (きらい＝嫌い, 'tendencia indeseable')."
+    },
+    {
+      "id": "d005-g05",
+      "type": "grammar",
+      "order": 24,
+      "front": "〜んじゃないでしょうか（話し言葉）",
+      "reading": "んじゃないでしょうか",
+      "meaning": "¿no sería…? (= opinión suavizada, oral)",
+      "example": "在宅でも、雑談の場をつくる工夫が必要なんじゃないでしょうか。",
+      "exampleEs": "Creo que, aun en teletrabajo, hace falta buscar la forma de crear espacios de charla.",
+      "examples": [
+        {
+          "jp": "この価格なら、お客様にも納得していただけるんじゃないでしょうか。",
+          "es": "Con este precio, creo que los clientes lo aceptarán."
+        },
+        {
+          "jp": "少し休んだほうがいいんじゃない？",
+          "es": "¿No sería mejor que descansaras un poco?"
+        }
+      ],
+      "note": "Versión hablada de 〜のではないか／〜ではなかろうか. En 聴解（概要理解・統合理解）marca la OPINIÓN del hablante: casi siempre la clave de la respuesta."
+    },
+    {
+      "id": "d005-g06",
+      "type": "grammar",
+      "order": 25,
+      "front": "〜といったらない",
+      "reading": "といったらない",
+      "meaning": "…a más no poder, extremadamente…",
+      "example": "あの新人、気が利くといったらないね。",
+      "exampleEs": "Ese nuevo es atento a más no poder.",
+      "examples": [
+        {
+          "jp": "初めてゲレンデで転んだときの恥ずかしさといったらなかった。",
+          "es": "No te imaginas la vergüenza que pasé la primera vez que me caí en la pista."
+        },
+        {
+          "jp": "満員電車で一時間立ちっぱなしの疲れといったらない。",
+          "es": "El cansancio de estar una hora de pie en un tren abarrotado es indescriptible."
+        }
+      ],
+      "note": "Forma: い形／Nといったらない（＝〜といったらありはしない／ありゃしない）. Es positivo o negativo según el contexto. Trampa de 即時応答: no significa 'no se ha dicho'."
+    },
+    {
+      "id": "d005-t01",
+      "type": "tip",
+      "order": 50,
+      "front": "Un texto empieza con 〜と言われて久しい／〜とされてきた／〜という声がある. ¿Es la opinión del autor?",
+      "meaning": "Casi nunca. Es una opinión ajena (一般論) que el autor cita para matizarla o rebatirla. La opción que la repite es la trampa (e). Busca qué viene después de しかし／ただ／だからといって."
+    },
+    {
+      "id": "d005-t02",
+      "type": "tip",
+      "order": 51,
+      "front": "¿Qué indica だからといって al principio de una frase?",
+      "meaning": "Que el autor acepta el dato anterior pero rechaza la conclusión fácil que otros sacan de él. Lo que sigue (〜とは限らない／〜わけではない／〜は早計だ) es su postura."
+    },
+    {
+      "id": "d005-t03",
+      "type": "tip",
+      "order": 52,
+      "front": "聴解 概要理解: la pregunta llega al final. ¿Qué anotas mientras escuchas?",
+      "meaning": "Tres cosas: el tema, lo que el hablante concede (確かに／〜のはそうなんです) y lo que viene tras ただ／でも／だからといって. La opinión suele cerrar con 〜んじゃないでしょうか／〜と思うんですよね／〜が大事なんです."
+    },
+    {
+      "id": "d005-t04",
+      "type": "tip",
+      "order": 53,
+      "front": "聴解 即時応答: una opción repite palabras de la frase que oíste. ¿Qué sospechas?",
+      "meaning": "Que es la trampa. La respuesta correcta reacciona a la INTENCIÓN (petición, queja, elogio, sugerencia), no a las palabras. Ej.: 気が利くといったらない es un elogio, no 'no se ha dicho'."
+    }
+  ]
+}
