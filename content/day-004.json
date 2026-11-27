@@ -1,0 +1,476 @@
+{
+  "day": 4,
+  "title": "Reading II: long opinion essay + paragraph map",
+  "cards": [
+    {
+      "id": "d004-v01",
+      "type": "vocab",
+      "order": 1,
+      "front": "銘打つ",
+      "reading": "めいうつ",
+      "meaning": "anunciar/presentar con el rótulo de; titular algo como",
+      "example": "「一冊でわかる」と銘打った本が書店に並んでいる。",
+      "exampleEs": "En las librerías se alinean libros anunciados como «Entiéndelo en un solo libro».",
+      "examples": [
+        {
+          "jp": "新プランは「業界最安値」と銘打って発売されたが、実際には他社と大差なかった。",
+          "es": "El nuevo plan salió al mercado presentado como «el más barato del sector», pero en realidad apenas se diferenciaba de la competencia."
+        },
+        {
+          "jp": "当ホテルでは「冬の感謝祭」と銘打ち、地元食材のビュッフェを開催いたします。",
+          "es": "En nuestro hotel celebraremos un bufé con productos locales bajo el nombre de «Festival de agradecimiento de invierno»."
+        }
+      ],
+      "note": "Forma típica: 「〜」と銘打つ／〜と銘打った＋sustantivo. Suena a prensa y publicidad; a menudo con un matiz de 'se anuncia así, pero…'."
+    },
+    {
+      "id": "d004-v02",
+      "type": "vocab",
+      "order": 2,
+      "front": "噛み砕く",
+      "reading": "かみくだく",
+      "meaning": "explicar de forma sencilla, desmenuzar (lit. triturar con los dientes)",
+      "example": "専門家が難しい用語を噛み砕いて説明してくれた。",
+      "exampleEs": "El experto nos explicó los términos difíciles de forma sencilla.",
+      "examples": [
+        {
+          "jp": "新人には、在庫管理の仕組みを噛み砕いて教える必要がある。",
+          "es": "A los recién llegados hay que enseñarles el sistema de control de inventario de forma muy desmenuzada."
+        },
+        {
+          "jp": "噛み砕かれた情報ばかりでは、自分で考える機会が失われる。",
+          "es": "Si solo recibimos información ya masticada, perdemos ocasiones de pensar por nosotros mismos."
+        }
+      ],
+      "note": "Casi siempre 噛み砕いて説明する／伝える／教える. Distinto de 咀嚼する: 噛み砕く lo hace el emisor; 咀嚼する, el receptor."
+    },
+    {
+      "id": "d004-v03",
+      "type": "vocab",
+      "order": 3,
+      "front": "ありがたがる",
+      "reading": "ありがたがる",
+      "meaning": "valorar en exceso, venerar algo (a menudo sin motivo)",
+      "example": "わかりにくい説明を「高度だ」とありがたがる風潮がある。",
+      "exampleEs": "Hay una tendencia a venerar las explicaciones difíciles como si fueran «de alto nivel».",
+      "examples": [
+        {
+          "jp": "海外の流行を何でもありがたがるのは考えものだ。",
+          "es": "Eso de venerar cualquier moda extranjera es discutible."
+        },
+        {
+          "jp": "肩書きをありがたがるより、実際の仕事ぶりを見るべきだ。",
+          "es": "Más que dar valor a los títulos, habría que fijarse en cómo trabaja realmente."
+        }
+      ],
+      "note": "El sufijo 〜がる (sentimiento observado desde fuera) da un matiz crítico: el autor suele desaprobarlo."
+    },
+    {
+      "id": "d004-v04",
+      "type": "vocab",
+      "order": 4,
+      "front": "風潮",
+      "reading": "ふうちょう",
+      "meaning": "tendencia social, clima de opinión (a menudo con matiz negativo)",
+      "example": "効率ばかりを重視する風潮に疑問を感じる。",
+      "exampleEs": "Siento dudas ante la tendencia a valorar solo la eficiencia.",
+      "examples": [
+        {
+          "jp": "失敗を許さない社会の風潮が、若者の挑戦を妨げている。",
+          "es": "El clima social que no perdona el fracaso frena los intentos de los jóvenes."
+        },
+        {
+          "jp": "近年、残業を美徳とする風潮は薄れつつある。",
+          "es": "En los últimos años, la idea de que hacer horas extra es una virtud se está debilitando."
+        }
+      ],
+      "note": "Colocaciones: 〜とする風潮／〜という風潮がある／風潮が強まる・薄れる. En 読解, si el autor menciona un 風潮, casi siempre lo critica."
+    },
+    {
+      "id": "d004-v05",
+      "type": "vocab",
+      "order": 5,
+      "front": "利害",
+      "reading": "りがい",
+      "meaning": "intereses (en juego), pros y contras para cada parte",
+      "example": "立場によって利害が異なるため、合意は容易ではない。",
+      "exampleEs": "Como los intereses difieren según la posición de cada uno, el acuerdo no es fácil.",
+      "examples": [
+        {
+          "jp": "観光客の増加をめぐって、住民と事業者の利害が対立している。",
+          "es": "En torno al aumento de turistas, chocan los intereses de los vecinos y de las empresas."
+        },
+        {
+          "jp": "この取引は双方の利害が一致したからこそ成立した。",
+          "es": "Este trato salió adelante precisamente porque coincidían los intereses de ambas partes."
+        }
+      ],
+      "note": "利害が一致する／対立する／絡む; 利害関係者 = partes interesadas (stakeholders)."
+    },
+    {
+      "id": "d004-v06",
+      "type": "vocab",
+      "order": 6,
+      "front": "切り捨てる",
+      "reading": "きりすてる",
+      "meaning": "descartar, recortar, dejar fuera (sin consideración)",
+      "example": "短くまとめようとすれば、どこかで複雑さを切り捨てざるを得ない。",
+      "exampleEs": "Si se intenta resumirlo en poco espacio, inevitablemente hay que descartar parte de la complejidad.",
+      "examples": [
+        {
+          "jp": "採算の合わない地方路線を切り捨てる判断には批判も多い。",
+          "es": "La decisión de suprimir las líneas regionales no rentables ha recibido muchas críticas."
+        },
+        {
+          "jp": "少数意見を切り捨てて決めた方針は、後で問題になりやすい。",
+          "es": "Las políticas decididas despreciando las opiniones minoritarias suelen dar problemas después."
+        }
+      ],
+      "note": "También 端数を切り捨てる = redondear hacia abajo (contabilidad). Lo contrario: 切り上げる."
+    },
+    {
+      "id": "d004-v07",
+      "type": "vocab",
+      "order": 7,
+      "front": "核心",
+      "reading": "かくしん",
+      "meaning": "núcleo, meollo, punto esencial",
+      "example": "切り捨てられた部分にこそ問題の核心があった。",
+      "exampleEs": "Era precisamente en la parte descartada donde estaba el meollo del problema.",
+      "examples": [
+        {
+          "jp": "彼の質問は議論の核心を突いていた。",
+          "es": "Su pregunta iba directa al núcleo del debate."
+        },
+        {
+          "jp": "話が核心に触れそうになると、担当者は言葉を濁した。",
+          "es": "Cuando la conversación estaba a punto de tocar lo esencial, el responsable se fue por las ramas."
+        }
+      ],
+      "note": "核心を突く／核心に迫る／核心に触れる. No confundir con 確信（かくしん, convicción）: misma lectura."
+    },
+    {
+      "id": "d004-v08",
+      "type": "vocab",
+      "order": 8,
+      "front": "咀嚼する",
+      "reading": "そしゃくする",
+      "meaning": "digerir, asimilar (una idea); masticar",
+      "example": "人は自分で咀嚼する力を失っていく。",
+      "exampleEs": "La gente va perdiendo la capacidad de digerir las cosas por sí misma.",
+      "examples": [
+        {
+          "jp": "読んだ内容を自分なりに咀嚼してから意見を述べたい。",
+          "es": "Quiero asimilar a mi manera lo que he leído antes de dar mi opinión."
+        },
+        {
+          "jp": "上司の指示をよく咀嚼せずに動くと、二度手間になる。",
+          "es": "Si actúas sin digerir bien las instrucciones del jefe, acabas haciendo el trabajo dos veces."
+        }
+      ],
+      "note": "Registro culto. En sentido literal es 'masticar' (咀嚼力 = capacidad de masticar)."
+    },
+    {
+      "id": "d004-v09",
+      "type": "vocab",
+      "order": 9,
+      "front": "敬遠する",
+      "reading": "けいえんする",
+      "meaning": "evitar, rehuir, mantener las distancias",
+      "example": "少し難しい文章に出会っただけで敬遠してしまう。",
+      "exampleEs": "Basta con toparse con un texto un poco difícil para rehuirlo.",
+      "examples": [
+        {
+          "jp": "価格が高いため、若い客層には敬遠されがちだ。",
+          "es": "Por su precio alto, el público joven tiende a evitarlo."
+        },
+        {
+          "jp": "手続きが煩雑な制度は、利用者から敬遠される。",
+          "es": "Los sistemas con trámites complicados acaban siendo evitados por los usuarios."
+        }
+      ],
+      "note": "Muy frecuente en pasiva: 〜に敬遠される／敬遠されがちだ. Trampa: 敬 no implica respeto aquí."
+    },
+    {
+      "id": "d004-v10",
+      "type": "vocab",
+      "order": 10,
+      "front": "迎合する",
+      "reading": "げいごうする",
+      "meaning": "complacer, plegarse (a los gustos de otros), adular",
+      "example": "送り手は受け手に迎合して、さらに単純な説明を用意する。",
+      "exampleEs": "El emisor, plegándose al receptor, prepara explicaciones aún más simples.",
+      "examples": [
+        {
+          "jp": "世論に迎合するだけの政治家は信頼されない。",
+          "es": "No se confía en un político que solo se pliega a la opinión pública."
+        },
+        {
+          "jp": "顧客に迎合することと、顧客を大切にすることは違う。",
+          "es": "Complacer al cliente en todo no es lo mismo que cuidarlo."
+        }
+      ],
+      "note": "Siempre 〜に迎合する. Valor negativo (el autor lo critica). Compárese con 配慮する (positivo)."
+    },
+    {
+      "id": "d004-v11",
+      "type": "vocab",
+      "order": 11,
+      "front": "培う",
+      "reading": "つちかう",
+      "meaning": "cultivar, desarrollar (capacidades, relaciones) con el tiempo",
+      "example": "考え続けることでしか培われない力がある。",
+      "exampleEs": "Hay capacidades que solo se cultivan pensando sin parar.",
+      "examples": [
+        {
+          "jp": "長年培ってきた信頼関係が、一度の不祥事で崩れた。",
+          "es": "La relación de confianza cultivada durante años se vino abajo por un solo escándalo."
+        },
+        {
+          "jp": "コンシェルジュの仕事で培った対応力は、購買の交渉でも生きている。",
+          "es": "La capacidad de respuesta que desarrollé como conserje también me sirve en las negociaciones de compras."
+        }
+      ],
+      "note": "Objetos típicos: 力・能力・経験・信頼・感性. Más formal que 育てる／身につける."
+    },
+    {
+      "id": "d004-v12",
+      "type": "vocab",
+      "order": 12,
+      "front": "もどかしさ",
+      "reading": "もどかしさ",
+      "meaning": "frustración/impaciencia de no poder (entender, expresar, avanzar)",
+      "example": "すぐに理解できないもどかしさは、決して無駄な時間ではない。",
+      "exampleEs": "La frustración de no entender de inmediato no es en absoluto tiempo perdido.",
+      "examples": [
+        {
+          "jp": "言いたいことがうまく日本語にならないもどかしさを感じる。",
+          "es": "Siento la frustración de no poder expresar bien en japonés lo que quiero decir."
+        },
+        {
+          "jp": "交渉が少しも前に進まず、もどかしい思いをした。",
+          "es": "La negociación no avanzaba nada y lo pasé con mucha impaciencia."
+        }
+      ],
+      "note": "Adjetivo: もどかしい. Matiz: impaciencia porque algo no sale como uno quiere (no es enfado: eso es 苛立ち)."
+    },
+    {
+      "id": "d004-v13",
+      "type": "vocab",
+      "order": 13,
+      "front": "遠回り",
+      "reading": "とおまわり",
+      "meaning": "rodeo, camino largo",
+      "example": "私たちは時に遠回りを引き受けるべきなのである。",
+      "exampleEs": "A veces debemos aceptar dar un rodeo.",
+      "examples": [
+        {
+          "jp": "一見遠回りに見えても、基礎から学ぶのが結局は近道だ。",
+          "es": "Aunque parezca un rodeo, aprender desde la base es al final el atajo."
+        },
+        {
+          "jp": "雪で道路が閉鎖され、遠回りしてホテルに戻った。",
+          "es": "Cerraron la carretera por la nieve y volví al hotel dando un rodeo."
+        }
+      ],
+      "note": "Antónimo: 近道（ちかみち）. Muy típico el contraste 遠回りに見えて実は近道."
+    },
+    {
+      "id": "d004-v14",
+      "type": "vocab",
+      "order": 14,
+      "front": "一見",
+      "reading": "いっけん",
+      "meaning": "a primera vista, aparentemente",
+      "example": "一見すべてを示しているようでいて、実は肝心な部分を覆い隠している。",
+      "exampleEs": "A primera vista parece mostrarlo todo, pero en realidad oculta lo esencial.",
+      "examples": [
+        {
+          "jp": "一見無関係な二つの出来事が、実は深くつながっていた。",
+          "es": "Dos sucesos aparentemente sin relación estaban en realidad profundamente conectados."
+        },
+        {
+          "jp": "一見簡単そうな作業ほど、ミスが起きやすい。",
+          "es": "Cuanto más fácil parece una tarea a primera vista, más errores se cometen."
+        }
+      ],
+      "note": "Señal de lectura: 一見〜 anuncia casi siempre un 実は／しかし que da la verdad según el autor. También 一見の価値がある = vale la pena verlo."
+    },
+    {
+      "id": "d004-v15",
+      "type": "vocab",
+      "order": 15,
+      "front": "取り返しのつかない",
+      "reading": "とりかえしのつかない",
+      "meaning": "irreparable, que no tiene vuelta atrás",
+      "example": "小さなミスが積み重なれば、取り返しのつかない事態を招きかねない。",
+      "exampleEs": "Si se acumulan errores pequeños, pueden provocar una situación irreparable.",
+      "examples": [
+        {
+          "jp": "一度失った信用は取り返しがつかない。",
+          "es": "La confianza, una vez perdida, no se recupera."
+        },
+        {
+          "jp": "発注数を一桁間違えて、取り返しのつかないことになるところだった。",
+          "es": "Me equivoqué en un dígito en la cantidad del pedido y casi provoco algo irreparable."
+        }
+      ],
+      "note": "Formas: 取り返しのつかない＋sustantivo／取り返しがつかない (predicado). Colocación: 事態・失敗・こと."
+    },
+    {
+      "id": "d004-v16",
+      "type": "vocab",
+      "order": 16,
+      "front": "危うい",
+      "reading": "あやうい",
+      "meaning": "peligroso, precario, en riesgo",
+      "example": "組織にとって本当に危ういのは、ミスが見えなくなることだ。",
+      "exampleEs": "Lo verdaderamente peligroso para una organización es que los errores dejen de verse.",
+      "examples": [
+        {
+          "jp": "経営基盤が危うい状態のまま、新規事業に手を広げるのは無謀だ。",
+          "es": "Lanzarse a nuevos negocios con una base financiera precaria es temerario."
+        },
+        {
+          "jp": "危うく予約を二重に受けるところだった。",
+          "es": "Por poco acepto una reserva duplicada."
+        }
+      ],
+      "note": "Más escrito que 危ない. 危うく〜ところだった = 'por poco…'. Distinto de 怪しい（sospechoso）."
+    },
+    {
+      "id": "d004-v17",
+      "type": "vocab",
+      "order": 17,
+      "front": "摂取する",
+      "reading": "せっしゅする",
+      "meaning": "ingerir, absorber (alimentos, información)",
+      "example": "噛み砕かれた情報ばかりを摂取していると、考える力が衰える。",
+      "exampleEs": "Si solo absorbemos información ya masticada, la capacidad de pensar se debilita.",
+      "examples": [
+        {
+          "jp": "ビタミンを十分に摂取するよう医師に勧められた。",
+          "es": "El médico me recomendó ingerir suficientes vitaminas."
+        },
+        {
+          "jp": "短い動画で情報を摂取する若者が増えている。",
+          "es": "Cada vez más jóvenes consumen información a través de vídeos cortos."
+        }
+      ],
+      "note": "Literal: alimentos y nutrientes (栄養を摂取する). Metafórico en ensayos: 情報を摂取する."
+    },
+    {
+      "id": "d004-g01",
+      "type": "grammar",
+      "order": 20,
+      "front": "〜にせよ〜にせよ",
+      "reading": "〜にせよ〜にせよ",
+      "meaning": "tanto si… como si…; ya sea… o…",
+      "example": "年金制度にせよ観光政策にせよ、単純な答えはない。",
+      "exampleEs": "Ya sea el sistema de pensiones o la política turística, no hay respuestas simples.",
+      "examples": [
+        {
+          "jp": "賛成するにせよ反対するにせよ、理由を明確に述べてほしい。",
+          "es": "Tanto si estás a favor como en contra, me gustaría que expusieras claramente tus razones."
+        },
+        {
+          "jp": "値上げを受け入れるにせよ断るにせよ、今週中に仕入れ先へ回答しなければならない。",
+          "es": "Aceptemos o rechacemos la subida de precio, hay que responder al proveedor esta semana."
+        }
+      ],
+      "note": "接続: N／V辞書形／いA＋にせよ（×2）. Variante más formal: 〜にしろ〜にしろ (más hablada), 〜であれ〜であれ (N). Tras ello viene una afirmación válida para ambos casos."
+    },
+    {
+      "id": "d004-g02",
+      "type": "grammar",
+      "order": 21,
+      "front": "〜ようでいて（実は）",
+      "reading": "〜ようでいて",
+      "meaning": "parece… pero en realidad…",
+      "example": "わかりやすい説明は、すべてを示しているようでいて、実は肝心な部分を覆い隠している。",
+      "exampleEs": "Las explicaciones fáciles parecen mostrarlo todo, pero en realidad ocultan lo esencial.",
+      "examples": [
+        {
+          "jp": "彼は何も考えていないようでいて、実は誰よりも先を読んでいる。",
+          "es": "Parece que no piensa en nada, pero en realidad anticipa mejor que nadie."
+        },
+        {
+          "jp": "この規則は公平なようでいて、実際には一部の部署だけに負担を強いている。",
+          "es": "Esta norma parece justa, pero en la práctica impone la carga solo a algunos departamentos."
+        }
+      ],
+      "note": "接続: V普通形／いA／なA・N＋な／の＋ようでいて. Marcador de postura: lo que sigue (実は〜) es la visión del autor. Similar: 〜ように見えて、〜かと思いきや."
+    },
+    {
+      "id": "d004-g03",
+      "type": "grammar",
+      "order": 22,
+      "front": "〜わけではない。そうではなく、〜",
+      "reading": "そうではなく",
+      "meaning": "no es que…; lo que digo es que…",
+      "example": "わかりにくいものに耐えよ、と言いたいわけではない。そうではなく、立ち止まる習慣が大切なのではないか。",
+      "exampleEs": "No es que quiera decir «soportad lo difícil». Lo que digo es que lo importante es la costumbre de detenerse.",
+      "examples": [
+        {
+          "jp": "値段が高いから断ったわけではない。そうではなく、納期が合わなかったのだ。",
+          "es": "No lo rechacé por caro. Fue porque el plazo de entrega no encajaba."
+        },
+        {
+          "jp": "技術の進歩を否定しているのではない。そうではなく、使い方を問うているのである。",
+          "es": "No niego el progreso técnico. Lo que cuestiono es cómo se usa."
+        }
+      ],
+      "note": "Estructura de corrección: el autor rechaza una lectura errónea y, tras そうではなく, da su verdadera tesis. En preguntas de 主張, la respuesta casi siempre sale de la parte que sigue a そうではなく."
+    },
+    {
+      "id": "d004-g04",
+      "type": "grammar",
+      "order": 23,
+      "front": "〜すべがない",
+      "reading": "〜すべがない",
+      "meaning": "no hay manera de…, no tener medio de…",
+      "example": "受け手はそれに気づくすべがない。",
+      "exampleEs": "El receptor no tiene forma de darse cuenta de ello.",
+      "examples": [
+        {
+          "jp": "当時は情報が乏しく、被害の全容を知るすべがなかった。",
+          "es": "En aquella época escaseaba la información y no había manera de conocer el alcance total de los daños."
+        },
+        {
+          "jp": "担当者と連絡がつかず、なすすべもなく待つしかなかった。",
+          "es": "No conseguíamos contactar con el responsable y solo pudimos esperar sin poder hacer nada."
+        }
+      ],
+      "note": "接続: V辞書形＋すべがない／すべもない. Escrito: すべ＝術. Frase hecha: なすすべもない (no poder hacer nada). Más literario que 〜ようがない."
+    },
+    {
+      "id": "d004-t01",
+      "type": "tip",
+      "order": 50,
+      "front": "¿Cómo leo un 長文 de opinión de ~1000字?",
+      "meaning": "Haz un 'mapa' de una línea por párrafo con su función: 現状・一般論 → 譲歩（確かに）→ 逆接（しかし）→ 主張 → 結論. La pregunta final de 主張 casi siempre se responde con el último párrafo, pero hay que comprobar que la opción no pierda matices.",
+      "note": "Hoy: ①現状 ②譲歩 ③主張1 ④主張2（さらに） ⑤結論（そうではなく〜のではないか）."
+    },
+    {
+      "id": "d004-t02",
+      "type": "tip",
+      "order": 51,
+      "front": "Una opción coincide con el 譲歩 del autor (確かに〜). ¿Es la tesis?",
+      "meaning": "No. Lo que el autor concede tras 確かに／もちろん es verdad para él, pero no es lo que quiere decir. Es la trampa (e): la tesis viene después de しかし."
+    },
+    {
+      "id": "d004-t03",
+      "type": "tip",
+      "order": 52,
+      "front": "¿Qué hago con 〜わけではない。そうではなく〜?",
+      "meaning": "Lo que va tras そうではなく es la tesis. Lo que va antes de わけではない es la lectura que el autor rechaza: si una opción la dice, es falsa (c)."
+    },
+    {
+      "id": "d004-t04",
+      "type": "tip",
+      "order": 53,
+      "front": "Rutina de verificación para opinión",
+      "meaning": "Antes de marcar, subraya la frase del texto que justifica la opción. Si la opción tiene 一切・必ず・すべて y el texto no, descártala (a)."
+    }
+  ]
+}
